@@ -1,0 +1,7 @@
+SQLAlchemy==2.0.35
+python-dotenv==1.0.1
+psycopg2==2.9.9
+pydantic_settings==2.5.2
+psycopg2-binary==2.9.9
+sqlalchemy-json==0.7.0
+vkbottle==4.4.2
