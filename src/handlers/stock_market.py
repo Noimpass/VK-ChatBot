@@ -28,6 +28,8 @@ async def stock_market(message: Message):
         await stock_market_remove_all_bids(message)
     elif text[0] == "биржа" and text[1] == "отменить" and text[2] != None:
         await stock_market_remove_bid_by_price(message, int(text[2]))
+    elif text[0] == "биржа" and text[1] == "ирис-голд":
+        await stock_market_add_gold(message)
 
 async def stock_market_display(message):
     all_bids = ManageStockMarket().get_all_bids()
@@ -177,3 +179,6 @@ async def stock_market_remove_bid_by_price(message, price):
     ManageUsers().add_user_money(message["from_id"], money)
     await group_api.messages.send(peer_id=message["peer_id"], message=f"Заявки на {price} удалены", random_id = 0)
 
+async def stock_market_add_gold(message):
+    ManageUsers().add_user_gold(message["from_id"], 1000)
+    await group_api.messages.send(peer_id=message["peer_id"], message=f"Вы получили 1000 ирис-голд", random_id = 0)
